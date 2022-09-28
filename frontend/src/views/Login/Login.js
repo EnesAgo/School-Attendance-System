@@ -70,7 +70,7 @@ function Login() {
           theme: 'bootstrap-v4',
           timeout: 5000
         }).show();
-        
+
         setActive(false)
         return;
       }
@@ -117,18 +117,18 @@ function Login() {
                     <button type="submit" className="btn btn-block text-uppercase">Enter</button>
                   </div>
                   <div className="text-right">
-                    <a href="mailo:info@ykc.edu.mk" className="forget-link">Need Help?</a>
+                     <a target={"_blank"} href="mailo:info@ykc.edu.mk" className="forget-link">Need Help?</a>
                   </div>
                   <div className="text-center mb-3">Our Social Media!</div>
                   <div className="row mb-3">
                     <div className="col-4">
-                      <a href="https://m.facebook.com/profile.php?id=100057597453888" className="btn btn-block btn-social btn-facebook">Facebook</a>
+                       <a target={"_blank"} href="https://m.facebook.com/profile.php?id=100057597453888" className="btn btn-block btn-social btn-facebook">Facebook</a>
                     </div>
                     <div className="col-4">
-                      <a href="https://www.instagram.com/ykcstruga/" className="btn btn-block btn-social btn-google" style={{width: "110px"}} >Instagram</a>
+                       <a target={"_blank"} href="https://www.instagram.com/ykcstruga/" className="btn btn-block btn-social btn-google" style={{width: "110px"}} >Instagram</a>
                     </div>
                     <div className="col-4">
-                      <a href="https://twitter.com/ykcedumk" className="btn btn-block btn-social btn-twitter">Twitter</a>
+                       <a target={"_blank"} href="https://twitter.com/ykcedumk" className="btn btn-block btn-social btn-twitter">Twitter</a>
                     </div>
                   </div>
                   <hr className="my-4" />
