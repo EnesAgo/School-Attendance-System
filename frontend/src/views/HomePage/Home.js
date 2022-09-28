@@ -31,7 +31,8 @@ function Home() {
               }).show();
 
             localStorage.clear();
-            navigate("/login")
+            navigate("/")
+            window.location.reload()
 
 
         }
@@ -59,7 +60,8 @@ function Home() {
               }).show();
 
             localStorage.clear();
-            navigate("/login")
+            navigate("/")
+            window.location.reload()
 
 
         }
