@@ -1,0 +1,184 @@
+body{
+    height: 100vh;
+    background: #dde1e7 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card{
+    overflow: hidden;
+    border: 0 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .img-left{
+    width: 45%;
+    background: url('./ykc-logo.jpeg') center;
+    background-size: cover;
+  }
+  
+  .card-body{
+    padding: 2rem;
+  }
+  
+  .title{
+    margin-bottom: 2rem;
+  }
+  
+  .form-input{
+    position: relative;
+  }
+  
+  .form-input select{
+    width: 100%;
+    height: 45px;
+    padding-left: 40px;
+    padding-right: 50px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    box-shadow: none;
+    border: 1px solid #00000020;
+    border-radius: 50px;
+    outline: none;
+    background: transparent;
+
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+  
+  .form-input span{
+    position: absolute;
+    top: 10px;
+    padding-left: 15px;
+    color: #007bff;
+  }
+  
+  .form-input input::placeholder{
+    color: black;
+    padding-left: 0px;
+  }
+  
+  .form-input input:focus, .form-input input:valid{
+    border: 2px solid #007bff;
+  }
+  
+  .form-input input:focus::placeholder{
+    color: #454b69;
+  }
+  
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
+    background-color: #007bff !important;
+    border: 0px;
+  }
+  
+  .form-box button[type="submit"]{
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background: #007bff;
+    color: #fff;
+    font-size: 90%;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    transition: 0.5s;
+    padding: 12px;
+  }
+  
+  .form-box button[type="submit"]:hover{
+    background: #0069d9;
+  }
+  
+  .forget-link, .register-link{
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .forget-link:hover, .register-link:hover{
+    color: #0069d9;
+    text-decoration: none;
+  }
+  
+  .form-box .btn-social{
+    color: white !important;
+    border: 0;
+    font-weight: bold;
+  }
+  
+  .form-box .btn-facebook{
+    background: #4866a8;
+  }
+  
+  .form-box .btn-google{
+    background: #da3f34;
+  }
+  
+  .form-box .btn-twitter{
+    background: #33ccff;
+  }
+  
+  .form-box .btn-facebook:hover{
+    background: #3d578f;
+  }
+  
+  .form-box .btn-google:hover{
+    background: #bf3b31;
+  }
+  
+  .form-box .btn-twitter:hover{
+    background: #2eb7e5;
+  }
+  
+
+  .inactive{
+    opacity: 50%;
+  }
+  .loader{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+  }
+  .loader .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .loader .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #000;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #000 transparent transparent transparent;
+  }
+  .loader .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .loader .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .loader .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

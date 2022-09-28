@@ -93,8 +93,13 @@ sequelize
   }
   }
 
+async function allUsers() {
+  return await UserList.findAll()
+}
+
 
   module.exports = {
     createUser: createUser,
-    loginUser: loginUser
+    loginUser: loginUser,
+    allUsers: allUsers
   }

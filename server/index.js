@@ -13,6 +13,7 @@ require('dotenv').config()
 const LoginFunc = require('./db controller/UserController')
 const createUser = LoginFunc.createUser;
 const loginUser = LoginFunc.loginUser;
+const allUsers = LoginFunc.allUsers;
 
 const QrFunc = require('./db controller/QrController')
 const createQr = QrFunc.createQr;
@@ -82,10 +83,10 @@ app.post("/login", async (req, res) => {
     else{
       res.json({error: "qr not found"})
     }
-
-
-
   })
+app.get("/allusers", async (req, res) => {
+  res.json(await allUsers())
+})
 
 app.post("/generatecode", async (req, res) => {
 

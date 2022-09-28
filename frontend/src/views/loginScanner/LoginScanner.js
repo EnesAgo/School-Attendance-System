@@ -3,6 +3,7 @@ import QrReader from 'react-qr-scanner'
 import api from '../../api/api'
 import { useNavigate } from "react-router-dom";
 import Noty from 'noty';
+import './style.css'
 
 function LoginScanner() {
     const navigate = useNavigate()
@@ -69,11 +70,36 @@ function LoginScanner() {
         height: 240,
         width: 320,
         display: "block",
-        opacity: "75%"
+        opacity: "85%",
+        position: "absolute",
+        zIndex: 1
+
+      }
+      const lineStyle = {
+        height: 2,
+        width: 320,
+        display: "block",
+        background: "rgb(255,0,0)",
+        opacity: "1",
+        position: "absolute",
+        zIndex: 99
+
       }
       return (
           <div style={bodyStyle}>
-            <button style={{position: "fixed", top:"5px", left:"5px"}} onClick={() => {localStorage.clear(); window.location.reload()}}>Go Back</button>
+
+
+            <div className="backButton" onClick={() => {localStorage.clear(); window.location.reload()}}>
+
+              <div className="wrapper">
+                <div><span>Go Back!</span></div>
+              </div>
+
+            </div>
+
+
+            {/* <button style={{position: "fixed", top:"5px", left:"5px"}} onClick={() => {localStorage.clear(); window.location.reload()}}>Go Back</button> */}
+           <div className="redLine" style={lineStyle}></div>
            <QrReader
               delay={delay}
               style={previewStyle}
