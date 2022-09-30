@@ -117,7 +117,7 @@ function Login() {
                     <button type="submit" className="btn btn-block text-uppercase">Enter</button>
                   </div>
                   <div className="text-right">
-                     <a target={"_blank"} href="mailo:info@ykc.edu.mk" className="forget-link">Need Help?</a>
+                     <a target={"_blank"} href="mailto:info@ykc.edu.mk" className="forget-link">Need Help?</a>
                   </div>
                   <div className="text-center mb-3">Our Social Media!</div>
                   <div className="row mb-3">
