@@ -1,14 +1,14 @@
 {
-  "name": "server",
+  "name": "attendance-system-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Attendance system server for school. Copyright © Enes Ago",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Enes Ago",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
