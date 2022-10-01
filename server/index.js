@@ -85,6 +85,7 @@ app.post("/login", async (req, res) => {
     }
   })
 app.get("/allusers", async (req, res) => {
+  console.log(await allUsers())
   res.json(await allUsers())
 })
 
