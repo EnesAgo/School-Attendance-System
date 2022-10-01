@@ -5,3 +5,17 @@ Content-Type: application/json
     "username": "Metin Igdir", 
     "email": "metin.igdir@ykc.edu.mk"
 }
+
+###
+
+POST http://localhost:3001/signup
+Content-Type: application/json
+
+{
+    "username": "Enes Ago", 
+    "email": "enesago010@gmail.com"
+}
+
+###
+
+GET http://localhost:3001/allusers

@@ -3,51 +3,8 @@ const jwt = require('jsonwebtoken');
 
 require("dotenv").config();
 
-const sequelize = new Sequelize(process.env.SEQUELIZE_DB, process.env.SEQUELIZE_USER, process.env.SEQUELIZE_PASSWORD, {
-    host: process.env.SEQUELIZE_HOST,
-    dialect: "mysql",
-  });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch((error) => {
-    console.error("Unable to connect to the database: ", error);
-  });
-
-  const userActivityList = sequelize.define("useractivity", {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,    
-    },
-    uuID: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    enterLeaveSchool: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
-  });
-
-  sequelize
-  .sync()
-  .then(() => {
-    console.log("User table created successfully!");
-  })
-  .catch((error) => {
-    console.error("Unable to create table : ", error);
-  });
+const Mongofile = require("./MongooseSchemas");
+const userActivityList = Mongofile.userActivityList;
 
 
   async function enterSchool(data) {
