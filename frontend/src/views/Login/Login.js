@@ -25,7 +25,7 @@ function Login() {
         try{
           const allEmails = await api.get("/allusers");
           const emailList = allEmails.map(e => e.email)
-          console.log(emailList)
+          // console.log(emailList)
           setEmailList(emailList)
         }
         catch(e){
@@ -38,7 +38,7 @@ function Login() {
   
     async function submitScan(e) {
       e.preventDefault()
-      console.log(typeof(email))
+      // console.log(typeof(email))
       setActive(true)
   
       if(!email || email===null){
@@ -83,7 +83,7 @@ function Login() {
         timeout: 5000 
       }).show();
   
-      console.log(res)
+      // console.log(res)
       
       localStorage.setItem('attendanceEmail', email)
       localStorage.setItem('qrID', JSON.stringify(res))

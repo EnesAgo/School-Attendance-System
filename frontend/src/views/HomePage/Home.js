@@ -20,7 +20,7 @@ function Home() {
 
         const res = await api.post("/enterschool", objData)
 
-        console.log(res);
+        // console.log(res);
         if(res){
             new Noty({
                 text: "officially entered to the school",
@@ -49,7 +49,7 @@ function Home() {
 
         const res = await api.post("/leaveschool", objData)
 
-        console.log(res);
+        // console.log(res);
         if(res){
             new Noty({
                 text: "officially entered to the school",

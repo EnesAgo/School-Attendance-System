@@ -18,3 +18,6 @@ root.render(
   </React.StrictMode>
 );
 
+console.log("%cCopyright © 2022-today EnesAgo. All Rights Reserved", "font-size: 15px")
+
+//Copyright © 2022-today EnesAgo. All Rights Reserved

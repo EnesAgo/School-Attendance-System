@@ -34,14 +34,14 @@ function LoginScanner() {
               theme: 'bootstrap-v4',
               timeout: 5000
             }).show();
-            console.log(res)  
+            // console.log(res)  
             navigate("/")
         }
         else{
             localStorage.setItem('attendanceJWT', JSON.stringify(res))
             localStorage.attendanceJWT = JSON.stringify(res)
-            console.log("navigating")
-            console.log(res)  
+            // console.log("navigating")
+            // console.log(res)  
             navigate("/home")
             window.location.reload()
         }
@@ -60,7 +60,7 @@ function LoginScanner() {
       function handleScan(data) {
         if(data && data !== null){
           setResult(data)
-          console.log(data)
+          // console.log(data)
         }
       }
     
