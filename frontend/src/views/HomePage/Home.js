@@ -69,6 +69,14 @@ function Home() {
 
       return (
           <div style={{width: "100%", height:"100%"}}>
+          
+            <div className="backButton" onClick={() => {localStorage.clear(); window.location.reload()}}>
+                <div className="wrapper">
+                    <div><span>Go Back!</span></div>
+                </div>
+            </div>
+
+          
             <div className="button-place">
             <button type="button" className="button1" onClick={enterSchool}>
                 <span className="button1__text">I'm Entering To School</span>
