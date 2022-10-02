@@ -2,8 +2,8 @@ POST http://localhost:3001/signup
 Content-Type: application/json
 
 {
-    "username": "Metin Igdir", 
-    "email": "metin.igdir@ykc.edu.mk"
+    "username": "Taner Sever", 
+    "email": "taner.sever@ykc.edu.mk"
 }
 
 ###
