@@ -6,7 +6,7 @@
 
 To install the application first type: <br />
 ```
-$ git clone https://github.com/EnesAgo/school-attendance-system.git
+$ git clone -b <branch-name> https://github.com/EnesAgo/school-attendance-system.git
 ``` 
 <br />
 First cd to server directory with:
