@@ -11,7 +11,6 @@ console.log(e)
 const QrListSchema = new mongoose.Schema({
     qrID: String,
     svg: String,
-    email: String,
 })
 
 const userActivityListSchema = new mongoose.Schema({
@@ -26,6 +25,7 @@ const UserListSchema = new mongoose.Schema({
     username: String,
     email: String,
     uuID: String,
+    qrID: String,
 })
 
 module.exports = {

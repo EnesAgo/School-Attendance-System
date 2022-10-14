@@ -1,9 +1,8 @@
-POST http://localhost:3001/signup
+POST http://localhost:3001/generatecode
 Content-Type: application/json
 
 {
-    "username": "Taner Sever", 
-    "email": "taner.sever@ykc.edu.mk"
+    "qrID": "9ec20700-3fe7-455a-9d49-74dca14188a0"
 }
 
 ###
@@ -12,8 +11,8 @@ POST http://localhost:3001/signup
 Content-Type: application/json
 
 {
-    "username": "Enes Ago", 
-    "email": "enesago010@gmail.com"
+    "username": "Mert Ago", 
+    "email": "mertagoo@gmail.com"
 }
 
 ###

@@ -2,8 +2,6 @@ const express = require("express");
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const qr = require('qrcode')
-const nodemailer = require("nodemailer");
-const { google } = require('googleapis')
 const sharp = require('sharp');
 const fs = require("fs")
 
@@ -39,20 +37,6 @@ app.use(cors({
   }))
 
 
-//googleapi
-const MAIL_CLIENT_ID = process.env.MAIL_CLIENT_ID;
-const MAIL_CLIENT_SECRET = process.env.MAIL_CLIENT_SECRET;
-const MAIL_REFRESH_TOKEN = process.env.MAIL_REFRESH_TOKEN;
-const MAIL_REDIRECT_URI = process.env.MAIL_REDIRECT_URI;
-const MAIL_USER = process.env.MAIL_USER;
-const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
-
-
-
-const oAuth2Client = new google.auth.OAuth2(MAIL_CLIENT_ID, MAIL_CLIENT_SECRET, MAIL_REDIRECT_URI);
-oAuth2Client.setCredentials({ refresh_token: MAIL_REFRESH_TOKEN })
-
-
 //routes
 app.get("/", (req, res) => {
     res.send("hello")
@@ -60,8 +44,11 @@ app.get("/", (req, res) => {
 
 app.post("/signup", async (req, res) => {
   const uuidString = uuidv4()
+  const qrIDString = uuidv4()
 
-  const user = await createUser({username: req.body.username, email: req.body.email, uuID: uuidString})
+  console.log(`index: ${qrIDString}`)
+
+  const user = await createUser({username: req.body.username, email: req.body.email, uuID: uuidString, qrID: qrIDString})
 
   console.log(user)
 
@@ -74,14 +61,14 @@ app.post("/login", async (req, res) => {
     console.log(req.body)
 
     if(qrCodes.some(e => e.qrID === req.body.qrID)){
-      const loginToken = await loginUser({email: req.body.email, qrID: req.body.qrID})
+      const loginToken = await loginUser({qrID: req.body.qrID})
 
       console.log(loginToken)
 
       res.header('authorization', loginToken).json(loginToken)
     }
     else{
-      res.json({error: "qr not found"})
+      res.json({error: "user not found"})
     }
   })
 app.get("/allusers", async (req, res) => {
@@ -90,14 +77,11 @@ app.get("/allusers", async (req, res) => {
 })
 
 app.post("/generatecode", async (req, res) => {
-
-    const username = req.body.username;
-    const email = req.body.email;
-
-    const newUUID = uuidv4();    
+    const newUUID = req.body.qrID;    
 
     const qrcode = qr.toString(newUUID, {type:'svg'}, (err, url) => {
         if(err) return err
+        console.log(url)
         return url
       })
 
@@ -107,9 +91,9 @@ app.post("/generatecode", async (req, res) => {
       return url
     })
 
-      const newQr = await createQr({username: username, email: email, qrID: newUUID, svg: qrcode.toString()})
+      const newQr = await createQr({qrID: newUUID, svg: qrcode.toString()})
 
-      const newQrString = await createQr({username: username, email: email, qrID: newUUID, svg: qrcodeString})
+      // const newQrString = await createQr({username: username, qrID: newUUID, svg: qrcodeString})
 
       const roundedCorners = Buffer.from(qrcode);
 
@@ -118,63 +102,8 @@ app.post("/generatecode", async (req, res) => {
         .png()
         .resize(400, 400)
         .toFile("new-file.png")
-
-
-
-
-      const accessToken = await oAuth2Client.getAccessToken();
-
-
-    //   const transporter = nodemailer.createTransport({
-    //     host: process.env.MAIL_HOST,
-    //     port: process.env.MAIL_PORT,
-    //     auth: {
-    //       user: process.env.MAIL_USER,
-    //       pass: process.env.MAIL_PASSWORD
-    //     },
-    //     tls: {
-    //       servername: process.env.MAIL_SERVERNAME
-    //   }
-    // });
-
-
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        type: 'OAuth2',
-        user: MAIL_USER,
-        pass: MAIL_PASSWORD,
-        clientId: MAIL_CLIENT_ID,
-        clientSecret: MAIL_CLIENT_SECRET,
-        refreshToken: MAIL_REFRESH_TOKEN,
-        accessToken: accessToken,
-      },
-    });
-
-    const mailOptions = {
-      from: '"YKC ATTENDANCE SYSTEM" <gfree0838@gmail.com>', // sender address
-      to: email, // list of receivers
-      subject: "YKC / QR CODE", // Subject line
-      html: `<b>here is your qr code this:</b> <img src="cid:image">`, // html body
-      attachments: [{   // stream as an attachment
-        filename: 'image.png',
-        // content: fs.createReadStream('./new-file.png')
-        path: __dirname +'/new-file.png',
-        cid: 'image'
-    }]
-    }
-
-
-    transporter.sendMail(mailOptions, (err, info) => {
-      if(err){
-          console.log(err)
-          res.json(err)
-      }else{
-          console.log(`email sent uscceccfully to :${info.response}`)
-          res.json(newQr)
-      }
-    })
-
+        
+      return newQr
 })
 
 

@@ -7,16 +7,10 @@ const QrList = Mongofile.QrList;
 
   async function createQr(data) {
     try{
-      const allQRCodes = await QrList.find({})
-      if(allQRCodes !== [] || allQRCodes){
-        await QrList.deleteMany({})
-      }
-
-        const user = await QrList.create({username: data.username, email: data.email, qrID: data.qrID, svg: data.svg});
+        const user = await QrList.create({qrID: data.qrID, svg: data.svg});
 
         const dataUser = {
           qrID: user.qrID,
-          email: user.email, 
           svg: user.svg
         }
 

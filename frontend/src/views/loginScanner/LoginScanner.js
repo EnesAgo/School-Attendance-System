@@ -7,14 +7,12 @@ import './style.css'
 
 function LoginScanner() {
     const navigate = useNavigate()
-    const qrId = JSON.parse(localStorage.getItem("qrID")) || false
-
     const [delay, setDelay] = useState(100);
     const [result, setResult] = useState();
 
 
-    async function getQuery(email, qrID) {
-        const res = await api.post(`/login`, {email: email, qrID: qrID})
+    async function getQuery(qrID) {
+        const res = await api.post(`/login`, {qrID: qrID})
 
         return res;
       }
@@ -22,10 +20,9 @@ function LoginScanner() {
 
     useEffect(() => {
       if(result){
-        getQuery(localStorage.getItem("attendanceEmail"), result.text).then(res => {
+        getQuery(result.text).then(res => {
 
           if(res.error){
-            localStorage.setItem("qrID", false)
             localStorage.clear()
             new Noty({
               text: "qrcode not exepted",
@@ -92,7 +89,7 @@ function LoginScanner() {
             <div className="backButton" onClick={() => {localStorage.clear(); window.location.reload()}}>
 
               <div className="wrapper">
-                <div><span>Go Back!</span></div>
+                <div><span>RELOAD</span></div>
               </div>
 
             </div>

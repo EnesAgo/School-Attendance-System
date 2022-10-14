@@ -8,7 +8,10 @@ const UserList = Mongofile.UserList;
   async function createUser(data) {
     try{
 
-        const user = await UserList.create({username: data.username, email: data.email, uuID: data.uuID});
+        console.log(`userController: ${data.qrID}`)
+
+
+        const user = await UserList.create({username: data.username, email: data.email, uuID: data.uuID, qrID: data.qrID});
 
         const token = jwt.sign({uuID: data.uuID}, process.env.JWT_SECRET);
     
@@ -16,6 +19,7 @@ const UserList = Mongofile.UserList;
           username: user.username, 
           email: user.email, 
           uuID: user.uuID,
+          qrID: user.qrID,
           token: token
         }
 
@@ -33,7 +37,7 @@ const UserList = Mongofile.UserList;
   async function loginUser(data) {
     try{
 
-      const user = await UserList.findOne({email: data.email})
+      const user = await UserList.findOne({qrID: data.qrID})
 
     console.log(user)
 
@@ -43,6 +47,7 @@ const UserList = Mongofile.UserList;
         username: user.username, 
         email: user.email, 
         uuID: user.uuID,
+        qrID: user.qrID,
         token: token
       }
 
