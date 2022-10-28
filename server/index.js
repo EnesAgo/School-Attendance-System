@@ -57,8 +57,10 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login", async (req, res) => {
 
-    const qrCodes = await getQrCodes()
+    const qrCodes = await allUsers()
     console.log(req.body)
+
+    console.log(qrCodes.some(e => e.qrID === req.body.qrID))
 
     if(qrCodes.some(e => e.qrID === req.body.qrID)){
       const loginToken = await loginUser({qrID: req.body.qrID})

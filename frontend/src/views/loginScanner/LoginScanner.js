@@ -57,7 +57,7 @@ function LoginScanner() {
       function handleScan(data) {
         if(data && data !== null){
           setResult(data)
-          // console.log(data)
+          console.log(data)
         }
       }
     
