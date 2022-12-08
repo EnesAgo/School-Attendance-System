@@ -10,10 +10,8 @@ Content-Type: application/json
 POST http://localhost:3001/signup
 Content-Type: application/json
 
-{
-    "username": "Mert Ago", 
-    "email": "mertagoo@gmail.com"
-}
+{"username": "Aleksandra Niceska", "email": "aleksandra.niceska@ykc.edu.mk"}
+
 
 ###
 
