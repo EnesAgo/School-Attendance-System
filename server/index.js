@@ -17,9 +17,12 @@ const QrFunc = require('./db controller/QrController')
 const createQr = QrFunc.createQr;
 const getQrCodes = QrFunc.getQrCodes;
 
-const ActivityFunc = require('./db controller/UserActivityController')
+const ActivityFunc = require('./db controller/UserActivityController');
 const enterSchool = ActivityFunc.enterSchool;
 const leaveSchool = ActivityFunc.leaveSchool;
+
+const GetDataFunc = require("./db controller/GetData");
+const getData = GetDataFunc.getData;
 
 
 
@@ -40,6 +43,24 @@ app.use(cors({
 //routes
 app.get("/", (req, res) => {
     res.send("hello")
+})
+
+app.get("/getData", async (req, res) => {
+
+  const startDate = {
+    year: req.query.startDateyear,
+    month: req.query.startDatemonth,
+    day: req.query.startDateday,
+  }
+  const endDate = {
+    year: req.query.endDateyear,
+    month: req.query.endDatemonth,
+    day: req.query.endDateday,
+  }
+
+  const data = await getData(startDate, endDate)
+
+  res.json(data)
 })
 
 app.post("/signup", async (req, res) => {

@@ -1,9 +1,10 @@
 import React from 'react'
+import SelectDate from './components/Select/SelectDate';
 
 function App() {
   return (
     <div className="App">
-      app
+      <SelectDate />
     </div>
   );
 }

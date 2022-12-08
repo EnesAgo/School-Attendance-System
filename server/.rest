@@ -16,3 +16,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/allusers
+
+###
+
+GET http://localhost:3001/getData?startDateyear=2020&startDatemonth=11&startDateday=01&endDateyear=2023&endDatemonth=11&endDateday=01
