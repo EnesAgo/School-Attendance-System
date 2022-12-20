@@ -10,8 +10,9 @@ async function getData(startDate, endDAte) {
 
         const range = await userActivityList.find({ //query today up to tonight
             date: {
-                $gte: new Date(startDate.year, startDate.month, startDate.day), 
-                $lt: new Date(endDAte.year, endDAte.month, endDAte.day)
+                // $gte: new Date(startDate.year, startDate.month, startDate.day), 
+                $gte: moment(`${startDate.year}-${startDate.month}-${startDate.day}`).startOf('day').toDate(),
+                $lt: moment(`${endDAte.year}-${endDAte.month}-${endDAte.day}`).startOf('day').toDate()
             }
         })
 

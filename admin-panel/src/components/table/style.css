@@ -21,3 +21,14 @@ tr:nth-child(2n) {
 .tableHeader{
     background-color: #c9c9c9;
 }
+
+.red{
+    color: red
+}
+.green{
+    color: green
+}
+.bold{
+    font-size: large;
+    font-weight: 700;
+}

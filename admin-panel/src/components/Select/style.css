@@ -57,3 +57,24 @@
 .top .search:active, .top .search:hover {
     background: #008168;
 }
+
+.top .print {
+    margin-left: 20px;
+    width: 100px;
+    height: 52px;
+    
+    background: #2143ff;
+    /* border: 1px solid #000000; */
+    border: none;
+    border-radius: 20px;
+
+    color: #fff;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+.top .print:active, .top .print:hover {
+    background: #001fcf;
+}

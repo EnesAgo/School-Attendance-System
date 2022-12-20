@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import SelectDate from './components/Select/SelectDate';
 import { SearchContext } from './context/SearchContext';
 import api from './api/api'
+import Table from './components/table/Table';
+import moment from 'moment'
 
 function App() {
   const [search, setSearch] = useContext(SearchContext)
@@ -36,6 +38,22 @@ function App() {
       const response = await api.get(`/getData?${queryStartDate}&${queryEndDate}`)
       console.log(response)
 
+
+      const validData = response.map(element => {
+        return {
+          username: element.username,
+          email: element.email,
+          date: moment(element.date).format('YYYY, MMMM DD'),
+          hour: moment(element.date).format('HH:mm:ss'),
+          "enter/leave": element.enterLeaveSchool,
+
+          // uuID: element.uuID
+        }
+      })
+
+      setHead(Object.keys(validData[0]))
+      setTableData(validData)
+
   }
 
   useEffect(() => {
@@ -53,6 +71,10 @@ function App() {
         setEndDateDay={setEndDateDay}
       />
       
+      {
+        tableData && <Table headerData={head} mainData={tableData} />
+      }
+
     </div>
   );
 }

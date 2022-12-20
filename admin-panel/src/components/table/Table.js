@@ -27,7 +27,7 @@ function Table({headerData, mainData}) {
                             //     <td key={i}>{value.keyElement}</td>
                             // })
 
-                            headerData.map((elem, i) => <td key={`${i}-${value[elem]}`} >{value[elem]}</td>)
+                            headerData.map((elem, i) => <td key={`${i}-${value[elem]}`} className={`${value[elem] == 'enter' ? 'green bold' : (value[elem] == 'leave' && 'red bold')}`} >{value[elem]}</td>)
 
                         }
                     </tr>

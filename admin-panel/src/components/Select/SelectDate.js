@@ -78,6 +78,9 @@ function SelectDate({
             <input ref={startRef} type={"date"} /> <p>-</p> <input ref={endRef} type={"date"} />
           </div>
           <button className='search' onClick={submit} >Search</button>
+
+          <button className='print' onClick={() => window.print()} >Print</button>
+
         </div>
       )
   }
