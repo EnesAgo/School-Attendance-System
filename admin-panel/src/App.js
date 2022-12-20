@@ -4,6 +4,7 @@ import { SearchContext } from './context/SearchContext';
 import api from './api/api'
 import Table from './components/table/Table';
 import moment from 'moment'
+import Noty from 'noty';
 
 function App() {
   const [search, setSearch] = useContext(SearchContext)
@@ -28,7 +29,16 @@ function App() {
       !endDateMonth || endDateMonth == false ||
       !endDateDay || endDateDay == false
       ){
-        alert("date not selected")
+        console.log("date not selected")
+
+        new Noty({
+          text: "Please fill the dates",
+          layout: 'topRight',
+          type: 'error',
+          theme: 'bootstrap-v4',
+          timeout: 5000
+        }).show();
+
         return
       }
 
