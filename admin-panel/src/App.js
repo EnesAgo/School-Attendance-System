@@ -20,7 +20,12 @@ function App() {
   const [endDateMonth, setEndDateMonth] = useState(false)
   const [endDateDay, setEndDateDay] = useState(false)
 
+  const [userEmail, setUserEmail] = useState(false)
+
   async function SearchData() {
+
+    console.log(userEmail)
+
     if(
       !startDateYear || startDateYear == false ||
       !startDateMonth || startDateMonth == false ||
@@ -42,10 +47,47 @@ function App() {
         return
       }
 
+      if(!userEmail || userEmail=="false"){
+
+        console.log(`userEmail==false
+        ${userEmail}`)
+
+        const queryStartDate = `startDateyear=${startDateYear}&startDatemonth=${startDateMonth}&startDateday=${startDateDay}`;
+        const queryEndDate = `endDateyear=${endDateYear}&endDatemonth=${endDateMonth}&endDateday=${endDateDay}`;
+  
+        const response = await api.get(`/getData?${queryStartDate}&${queryEndDate}`)
+        console.log(response)
+  
+  
+        const validData = response.map(element => {
+          return {
+            username: element.username,
+            email: element.email,
+            date: moment(element.date).format('YYYY, MMMM DD'),
+            hour: moment(element.date).format('HH:mm:ss'),
+            "enter/leave": element.enterLeaveSchool,
+  
+            // uuID: element.uuID
+          }
+        })
+  
+        setHead(Object.keys(validData[0]))
+        setTableData(validData)
+
+        return
+      }
+
+      else{
+
+
       const queryStartDate = `startDateyear=${startDateYear}&startDatemonth=${startDateMonth}&startDateday=${startDateDay}`;
       const queryEndDate = `endDateyear=${endDateYear}&endDatemonth=${endDateMonth}&endDateday=${endDateDay}`;
+      const emailQuery = `email=${userEmail}`
 
-      const response = await api.get(`/getData?${queryStartDate}&${queryEndDate}`)
+      console.log(`userEmail==true
+      ${userEmail}`)
+
+      const response = await api.get(`/getUserData?${queryStartDate}&${queryEndDate}&${emailQuery}`)
       console.log(response)
 
 
@@ -64,6 +106,13 @@ function App() {
       setHead(Object.keys(validData[0]))
       setTableData(validData)
 
+      return
+
+      }
+
+
+
+
   }
 
   useEffect(() => {
@@ -79,6 +128,7 @@ function App() {
         setEndDateYear={setEndDateYear}
         setEndDateMonth={setEndDateMonth}
         setEndDateDay={setEndDateDay}
+        setUserEmail={setUserEmail}
       />
       
       {

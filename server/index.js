@@ -22,6 +22,7 @@ const enterSchool = ActivityFunc.enterSchool;
 const leaveSchool = ActivityFunc.leaveSchool;
 
 const GetDataFunc = require("./db controller/GetData");
+const { getUserData } = require("./db controller/GetData");
 const getData = GetDataFunc.getData;
 
 
@@ -63,6 +64,24 @@ app.get("/getData", async (req, res) => {
   res.json(data)
 })
 
+app.get("/getUserData", async (req, res) => {
+
+  const startDate = {
+    year: req.query.startDateyear,
+    month: req.query.startDatemonth,
+    day: req.query.startDateday,
+  }
+  const endDate = {
+    year: req.query.endDateyear,
+    month: req.query.endDatemonth,
+    day: req.query.endDateday,
+  }
+
+  const data = await getUserData(startDate, endDate, req.query.email)
+
+  res.json(data)
+})
+
 app.post("/signup", async (req, res) => {
   const uuidString = uuidv4()
   const qrIDString = uuidv4()
@@ -93,7 +112,8 @@ app.post("/login", async (req, res) => {
     else{
       res.json({error: "user not found"})
     }
-  })
+})
+
 app.get("/allusers", async (req, res) => {
   console.log(await allUsers())
   res.json(await allUsers())
