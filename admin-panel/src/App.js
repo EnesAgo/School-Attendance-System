@@ -90,6 +90,16 @@ function App() {
       const response = await api.get(`/getUserData?${queryStartDate}&${queryEndDate}&${emailQuery}`)
       console.log(response)
 
+      if(response.length == 0){
+        new Noty({
+          text: "User activity is empty",
+          layout: 'top',
+          type: 'error',
+          theme: 'bootstrap-v4',
+          timeout: 5000
+        }).show();
+        return
+      }
 
       const validData = response.map(element => {
         return {
